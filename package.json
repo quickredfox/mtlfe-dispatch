@@ -1,0 +1,9 @@
+{
+  "name": "mtlfe-dispatch",
+  "author": "Author Name",
+  "description": "Project description.",
+  "version": "0.0.1",
+  "main": "lib/mtlfe-dispatch.js",
+  "engines": { "node": "~v0.5.0" },
+  "dependencies": {},
+}
