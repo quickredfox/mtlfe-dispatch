@@ -1,5 +1,4 @@
 {
-    "vhosts_path": "/var/mtlfe/mtlfe-dispatch/vhosts",
-    "logs_path": "/var/mtlfe/mtlfe-dispatch/logs",
-    "pids_path": "/var/mtlfe/mtlfe-dispatch/pids"
+    "vhosts_path": "/var/mtlfe/vhosts",
+    "logs_path":   "/var/mtlfe/logs"
 }
