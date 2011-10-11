@@ -1,8 +1,8 @@
 #! /bin/sh
-cp config/upstart/mtlfe.conf /etc/init/mtlfe.conf &&\ 
-cp config/monit/monitrc /etc/monit/monitrc &&\
-cp config/nginx/mtlfe.org /etc/nginx/sites-available/mtlfe.org &&\
-ln -s /etc/nginx/sites-available/mtlfe.org mtlfe.org &&\
+cp /var/mtlfe/dispatch/config/upstart/mtlfe.conf /etc/init/mtlfe.conf &&\ 
+cp /var/mtlfe/dispatch/config/monit/monitrc /etc/monit/monitrc &&\
+cp /var/mtlfe/dispatch/config/nginx/mtlfe.org /etc/nginx/sites-available/mtlfe.org &&\
+ln -s /etc/nginx/sites-available/mtlfe.org /etc/nginx/sites-enabled/mtlfe.org &&\
 # /etc/init.d/nginx restart &&\
 # start mtlfe &&\
 # monit -d 60 -c /etc/monit/monitrc &&\
