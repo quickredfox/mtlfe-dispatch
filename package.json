@@ -4,6 +4,8 @@
   "description": "Project description.",
   "version": "0.0.1",
   "main": "lib/mtlfe-dispatch.js",
-  "engines": { "node": "~v0.5.0" },
-  "dependencies": {},
+  "engines": { "node": "~v0.4.12" },
+  "dependencies": {
+    "connect": ">= 1.7.0"
+  }
 }
