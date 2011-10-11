@@ -1,4 +1,5 @@
 require.paths.unshift __dirname
+require.paths.unshift '/var/mtlfe/dispatch'
 u       = require 'mtlfe/utilities'
 config  = require 'mtlfe/config' 
 connect = require 'connect'
