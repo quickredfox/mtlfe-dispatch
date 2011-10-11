@@ -29,22 +29,19 @@ while arg = argv.shift()
 #             syncRepo( req, next ) 
 #         else next()
 #     connect.vhost( hostname, server )
+
+module.exports = connect (req,res,next)-> res.end(200)
     
-hooks= [ 
-    connect.logger()
-    connect.bodyParser()
-    (req,res,next)->
-        console.log req
-        if req.body and req.body.payload
-            req.body.payload = JSON.parse( req.body.payload )
-            git.addRepo req.body.payload.repository.name, "#{req.body.payload.repository.url.replace(/\.git/,'')}.git", (err)-> console.log( err )
-        else res.end()
-]
-
-
-module.exports = connect.apply( connect, hooks )
-
-git.updateExistingRepos (errors)-> 
-    if errors then throw errors
-    console.log "Updated repos, Started listening on #{ hostnames.join(', ') } port #{port}"
-    module.exports.listen(port)
+# hooks= [ 
+#     connect.logger()
+#     connect.bodyParser()
+#     
+# ]
+# 
+# 
+# module.exports = connect.apply( connect, hooks )
+# 
+# git.updateExistingRepos (errors)-> 
+#     if errors then throw errors
+#     console.log "Updated repos, Started listening on #{ hostnames.join(', ') } port #{port}"
+#     module.exports.listen(port)
