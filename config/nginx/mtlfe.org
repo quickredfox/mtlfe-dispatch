@@ -12,7 +12,7 @@ upstream node_hooks_cluster {
 
 server {
     listen 0.0.0.0:80;
-    server_name *.mtlfe.org;
+    server_name mtlfe.org *.mtlfe.org;
     access_log /var/log/nginx/mtlfe-apps-access.log;
 
     location / {
@@ -26,7 +26,7 @@ server {
 
 server {
     listen 0.0.0.0:9000;
-    server_name *.mtlfe.org;
+    server_name mtlfe.org  *.mtlfe.org;
     access_log /var/log/nginx/mtlfe-hook-access.log;
 
     location / {
