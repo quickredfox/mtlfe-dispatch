@@ -54,4 +54,4 @@ updateExistingRepos = exports.updateExistingRepos = (callback)->
                     errors.push E
                 
     , [ ]
-    fns.shift()(fns)
+    if (start = fns.shift()) then start(fns) else end('nothing to host')
