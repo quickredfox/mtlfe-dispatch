@@ -1,2 +1,2 @@
-require.path.unsift __dirname
+require.path.unsift( __dirname )
 require( 'src/hooks' );
