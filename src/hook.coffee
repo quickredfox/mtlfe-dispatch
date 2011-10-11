@@ -25,16 +25,20 @@ hooks   = config.dirs.map (hostname)->
     hostnames.push hostname
     path = u.joinPath config.vhosts_path, hostname
     server = connect (req,res,next)->
-        if req.body and req.body.payload and req.method is 'POST'
-            req.body.payload = JSON.parse( req.body.payload )
+        if req.body and req.body.payload
             syncRepo( req, next ) 
         else next()
     connect.vhost( hostname, server )
     
 hooks.push connect.vhost config.hostname, fallback
+
 hooks.unshift connect.logger()
 hooks.unshift connect.bodyParser()
-
+hooks.unshift (req,res,next)->
+    console.log req
+    if req.body and req.body.payload
+        req.body.payload = JSON.parse( req.body.payload )
+    else res.end()
 
 module.exports = connect.apply( connect, hooks )
 
