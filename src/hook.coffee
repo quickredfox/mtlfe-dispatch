@@ -25,7 +25,7 @@ hooks   = config.dirs.map (hostname)->
     hostnames.push hostname
     path = u.joinPath config.vhosts_path, hostname
     server = connect (req,res,next)->
-        if req.body and req.body.payload and /post/i.test req.method
+        if req.body and req.body.payload and req.method is 'POST'
             req.body.payload = JSON.parse( req.body.payload )
             syncRepo( req, next ) 
         else next()
