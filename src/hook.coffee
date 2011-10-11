@@ -30,16 +30,17 @@ while arg = argv.shift()
 #         else next()
 #     connect.vhost( hostname, server )
     
-hooks.push connect.vhost config.hostname, fallback
+hooks= [ 
+    connect.logger()
+    connect.bodyParser()
+    (req,res,next)->
+        console.log req
+        if req.body and req.body.payload
+            req.body.payload = JSON.parse( req.body.payload )
+            git.addRepo req.body.payload.repository.name, "#{req.body.payload.repository.url.replace(/\.git/,'')}.git", (err)-> console.log( err )
+        else res.end()
+]
 
-hooks.unshift connect.logger()
-hooks.unshift connect.bodyParser()
-hooks.unshift (req,res,next)->
-    console.log req
-    if req.body and req.body.payload
-        req.body.payload = JSON.parse( req.body.payload )
-        git.addRepo req.body.payload.repository.name, "#{req.body.payload.repository.url.replace(/\.git/,'')}.git", (err)-> console.log( err )
-    else res.end()
 
 module.exports = connect.apply( connect, hooks )
 
