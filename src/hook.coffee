@@ -23,13 +23,14 @@ fallback = connect connect.bodyParser(), (req,res,next)->
 hooks   = config.dirs.map (hostname)->
     hostnames.push hostname
     path = u.joinPath config.vhosts_path, hostname
-    server = connect connect.bodyParser()  , (req,res,next)->
+    server = connect (req,res,next)->
         if req.body and req.body.payload and /post/i.test req.method
             syncRepo( req, next ) 
         else next()
     connect.vhost( hostname, server )
     
 hooks.push connect.vhost config.hostname, fallback
+hooks.unshift connect.bodyParser()
 hooks.unshift connect.logger()
 
 module.exports = connect.apply( connect, hooks )
