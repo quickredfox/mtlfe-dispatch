@@ -30,7 +30,7 @@ while arg = argv.shift()
 #         else next()
 #     connect.vhost( hostname, server )
 
-module.exports = connect (req,res,next)-> res.end(200)
+module.exports = connect( (req,res,next)-> res.end(200) ).listen port
     
 # hooks= [ 
 #     connect.logger()
