@@ -13,12 +13,13 @@ while arg = argv.shift()
 
 syncRepo = (req,next)->
     cloneurl = "#{req.body.payload.repository.url.replace(/\.git/,'')}.git"
+    console.log "syncrepo #{req.body.payload.repository.name}"
     git.addRepo req.body.payload.repository.name, cloneurl, (err)-> 
         delete req.body.payload
         next( err )  
           
 fallback = connect connect.bodyParser(), (req,res,next)->    
-        if req.body.payload then syncRepo( req, next ) else next()
+        if req.body.payload then syncRepo( req, next ) else res.end()
         
 hooks   = config.dirs.map (hostname)->
     hostnames.push hostname
