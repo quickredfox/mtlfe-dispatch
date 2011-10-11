@@ -9,10 +9,10 @@ cp /var/mtlfe/dispatch/config/nginx/mtlfe.org /etc/nginx/sites-available/mtlfe.o
 rm -rf /etc/nginx/sites-enabled/mtlfe.org && \
 ln -s /etc/nginx/sites-available/mtlfe.org /etc/nginx/sites-enabled/mtlfe.org && \
 
-start mtlfe-server-8001.conf && \
-start mtlfe-server-8002.conf && \
-start mtlfe-server-8003.conf && \
-start mtlfe-server-9001.conf
+start mtlfe-server-8001 && \
+start mtlfe-server-8002 && \
+start mtlfe-server-8003 && \
+start mtlfe-server-9001
 
 # /etc/init.d/nginx restart &&\
 # start mtlfe &&\
