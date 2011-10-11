@@ -5,7 +5,7 @@ git     = require 'mtlfe/git'
 connect = require 'connect'
 hostnames = []
 port      = 8888
-argv = process.argv
+argv = Array::slice.call( process.argv )
 console.log "ARGV #{process.argv}"
 while arg = argv.shift()
      if arg is '-p' then port = argv.shift()

@@ -44,4 +44,4 @@ module.exports = ((argv)->
     , []
     config.vhosts.sort (a,b)-> b.hostname.length - a.hostname.length 
     return config
-)(process.argv)
+)(Array::slice.call(process.argv))
