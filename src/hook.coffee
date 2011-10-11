@@ -29,7 +29,9 @@ hooks   = config.dirs.map (hostname)->
 hooks.push connect.vhost config.hostname, fallback
 hooks.unshift connect.logger()
 
+module.exports = connect.apply( connect, hooks )
+
 git.updateExistingRepos (errors)-> 
     if errors then throw errors
     console.log "Updated repos, Started listening on #{ hostnames.join(', ') } port #{port}"
-    connect.apply( connect, hooks ).listen(port)
+    module.exports.listen(port)
