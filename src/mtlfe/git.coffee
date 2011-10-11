@@ -29,10 +29,10 @@ updateRepo = exports.updateRepo = (hostname,callback)->
     path  = u.joinPath config.vhosts_path, hostname
     process.chdir(path)
     exec "git pull origin master", (error)->
-        if error then return callback( new Error "Problem updating repo [#{hostname}]; #{error}")
+        if error then return callback( new Error "Problem updating repo [#{hostname}] [#{path}]; #{error}")
         exec "git submodule foreach git pull", (error)->
             process.chdir( home )
-            if error then return callback( new Error "Problem updating submodule [#{hostname}]; #{error}")
+            if error then return callback( new Error "Problem updating submodule [#{hostname}] [#{path}]; #{error}")
             callback null, true
 
 updateExistingRepos = exports.updateExistingRepos = (callback)->     
