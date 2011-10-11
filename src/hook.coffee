@@ -12,7 +12,7 @@ while arg = argv.shift()
 
 syncRepo = (req,next)->
     cloneurl = "#{req.body.payload.repository.url.replace(/\.git/,'')}.git"
-    git.addRepo req.body.payload.name, cloneurl, (err)-> 
+    git.addRepo req.body.payload.repository.name, cloneurl, (err)-> 
         delete req.body.payload
         next( err )  
           

@@ -7,6 +7,7 @@ upstream node_app_cluster {
 
 upstream node_hooks_cluster {
     ip_hash;
+    server 127.0.0.1:9001;
 }
 
 server {
@@ -26,7 +27,6 @@ server {
 server {
     listen 0.0.0.0:9000;
     server_name mtlfe.org;
-    root /var/mtlfe/public
     access_log /var/log/nginx/mtlfe-hook-access.log;
 
     location / {
