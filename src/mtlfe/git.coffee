@@ -21,7 +21,7 @@ addRepo = exports.addRepo = (hostname,cloneurl,callback)->
     if local.indexOf( path ) is -1
         exec "git clone #{cloneurl} #{path}", (error)->
             if error then return callback( new Error "Problem cloning repo [#{hostname}] [#{cloneurl}]; #{error}")
-            return callback null, hostname:hostname,cloneurl:cloneurl
+            return callback null, true
     else
         updateRepo( hostname, callback )
     
@@ -33,7 +33,7 @@ updateRepo = exports.updateRepo = (hostname,callback)->
         exec "git submodule foreach git pull", (error)->
             process.chdir( home )
             if error then return callback( new Error "Problem updating submodule [#{hostname}]; #{error}")
-            callback null, hostname:hostname,cloneurl:cloneurl
+            callback null, true
 
 updateExistingRepos = exports.updateExistingRepos = (callback)->     
     console.time 'updating repos'
