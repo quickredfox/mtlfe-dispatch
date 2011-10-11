@@ -1,3 +1,4 @@
+#! /bin/sh
 # app servers
 node /var/mtlfe/dispatch/lib/server.js -h mltfe.org -p 8001 >> /var/log/mtlfe-dispatch.log 2>&1 
 node /var/mtlfe/dispatch/lib/server.js -h mltfe.org -p 8002 >> /var/log/mtlfe-dispatch.log 2>&1 
