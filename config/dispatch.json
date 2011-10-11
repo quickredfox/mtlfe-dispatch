@@ -1,5 +1,5 @@
 {
-    "vhosts_path": "/var/mtlfe/mtlfe-dispatch/vhosts",
-    "logs_path": "/var/mtlfe/mtlfe-dispatch/logs",
-    "pids_path": "/var/mtlfe/mtlfe-dispatch/pids"
+    "vhosts_path": "/Users/quickredfox/code/mtlfe-dispatch/vhosts",
+    "logs_path": "/Users/quickredfox/code/mtlfe-dispatch/logs",
+    "pids_path": "/Users/quickredfox/code/mtlfe-dispatch/pids"
 }
