@@ -5,8 +5,9 @@ git     = require 'mtlfe/git'
 connect = require 'connect'
 hostnames = []
 port      = 8888
-argv = process.argv()
-if arg is '-p' then port = argv.shift() while arg = argv.shift()
+argv = process.argv
+while arg = argv.shift()
+     if arg is '-p' then port = argv.shift()
 
 syncRepo = (req,next)->
     cloneurl = "#{req.body.payload.repository.url.replace(/\.git/,'')}.git"
