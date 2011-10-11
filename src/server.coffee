@@ -12,7 +12,7 @@ vhosts  = config.vhosts.map (vhost)->
         try
             servers[server_file] = require( server_file )
         catch E
-            servers[server_file] = connect (req,res,next)-> next new Error "vhost crashed during config [#{server_file}]"
+            servers[server_file] = connect (req,res,next)-> next new Error "vhost crashed during config [#{server_file}] #{E}"
     hostnames.push hostname
     vhost.server = connect.vhost hostname, servers[server_file]
     return vhost
