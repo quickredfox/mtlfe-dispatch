@@ -12,7 +12,7 @@ ln -s /etc/nginx/sites-available/mtlfe.org /etc/nginx/sites-enabled/mtlfe.org &&
 start mtlfe-server-8001 && \
 start mtlfe-server-8002 && \
 start mtlfe-server-8003 && \
-start mtlfe-server-9001
+start mtlfe-hook-9001
 
 # /etc/init.d/nginx restart &&\
 # start mtlfe &&\
