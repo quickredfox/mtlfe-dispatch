@@ -13,6 +13,7 @@ module.exports = ((argv)->
     config.port = if dispatch_port then dispatch_port else 5000
     config.hostname = if dispatch_host then dispatch_host else '127.0.0.1'
     config.vhosts_path ||= u.joinPath( base_path, 'vhosts' )
+    console.log config.vhosts_path
     config.dirs   = fs.readdirSync( config.vhosts_path )
     config.vhosts = config.dirs.reduce (vhosts,dirname)-> 
         path = u.joinPath( config.vhosts_path, dirname )

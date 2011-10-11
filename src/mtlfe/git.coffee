@@ -33,18 +33,25 @@ updateRepo = exports.updateRepo = (hostname,callback)->
         if error then return callback( new Error "Problem updating repo [#{hostname}]; #{error}")
         callback null, hostname:hostname,cloneurl:cloneurl
 
-updateExistingRepos = exports.updateExistingRepos = (callback)->        
-    errors = null
-    end = ()-> callback ( if errors.length > 0 then errors else null ), errors.length is 0
+updateExistingRepos = exports.updateExistingRepos = (callback)->     
+    console.time 'updating repos'
+    errors = []
+    end = ()-> 
+        console.timeEnd 'updating repos'
+        callback ( if errors.length > 0 then errors else null ), errors.length is 0
     fns = getLocalRepos().map (repo)->
         (fns)->
             process.chdir repo
             console.log "updating: #{repo}"
             exec 'git pull origin master', (error,stdout,stderr)->
                 process.chdir( home )
-                if error then errors.push(error)
-                else if fns.length > 0
-                    fns.shift()(fns)
-                console.log "#{stdout}\n#{stderr}"
-    , [ end ]
+                console.info "#{stdout}\n#{stderr}"
+                try
+                    if error then errors.push(error)
+                    else if fns.length > 0 then fns.shift()(fns)
+                    else end()
+                catch E
+                    errors.push E
+                
+    , [ ]
     fns.shift()(fns)
