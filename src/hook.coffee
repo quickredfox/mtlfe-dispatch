@@ -8,7 +8,7 @@ port      = 8888
 argv = process.argv
 while arg = argv.shift()
      if arg is '-p' then port = argv.shift()
-
+console.log "HOOK PORT #{port}, #{process.argv}"
 syncRepo = (req,next)->
     cloneurl = "#{req.body.payload.repository.url.replace(/\.git/,'')}.git"
     git.addRepo req.body.payload.name, cloneurl, (err)-> 
