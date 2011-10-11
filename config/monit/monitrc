@@ -1,0 +1,14 @@
+#!monit
+set logfile /var/log/monit.log
+
+check host mtlfe.org with address 127.0.0.1
+    start program = "/sbin/start mtlfe"
+    stop program  = "/sbin/stop  mtlfe"
+    if failed port 80 protocol HTTP
+        request /
+        with timeout 10 seconds
+        then restart
+    if failed port 9000 protocol HTTP
+        request /
+        with timeout 10 seconds
+        then restart
