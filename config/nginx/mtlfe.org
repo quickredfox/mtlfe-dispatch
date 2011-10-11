@@ -27,7 +27,7 @@ server {
     listen 0.0.0.0:9000;
     server_name mtlfe.org;
     root /var/mtlfe/public
-    access_log /var/log/nginx/mtlfe-hooks-access.log;
+    access_log /var/log/nginx/mtlfe-hook-access.log;
 
     location / {
       proxy_set_header X-Real-IP $remote_addr;
