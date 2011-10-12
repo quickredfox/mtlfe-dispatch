@@ -6,6 +6,8 @@ cp /var/mtlfe/dispatch/config/upstart/mtlfe-hook-9001.conf   /etc/init/mtlfe-hoo
 cp /var/mtlfe/dispatch/config/monit/monitrc /etc/monit/monitrc && \
 cp /var/mtlfe/dispatch/config/nginx/mtlfe.org /etc/nginx/sites-available/mtlfe.org && \
 
+chmod 0644 /etc/monit/monitrc
+
 rm -rf /etc/nginx/sites-enabled/mtlfe.org && \
 ln -s /etc/nginx/sites-available/mtlfe.org /etc/nginx/sites-enabled/mtlfe.org && \
 
