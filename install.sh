@@ -16,6 +16,7 @@ start mtlfe-hook-9001
 
 
 chmod 0600 /etc/monit/monitrc 
+chmod +x ./*.sh
 
 /etc/init.d/nginx restart
 monit -d 60 -c /etc/monit/monitrc
