@@ -1,5 +1,10 @@
 #!monit
 set logfile /var/log/monit.log
+set mailserver smtp.gmail.com port 587
+    username "mtlfe.org@gmail.com" password "sm34g0l"
+    using tlsv1
+    with timeout 30 seconds
+	set alert mtlfe.org@gmail.com
 
 check host mtlfe-server-8001 with address 127.0.0.1
     start program = "/sbin/start mtlfe-server-8001"
