@@ -5,7 +5,7 @@ check host mtlfe-server-8001 with address 127.0.0.1
     start program = "/sbin/start mtlfe-server-8001"
     stop program  = "/sbin/stop  mtlfe-server-8001"
     if failed port 8001 protocol HTTP
-        request /
+        request /ping
         with timeout 10 seconds
         then restart
         
@@ -13,7 +13,7 @@ check host mtlfe-server-8002 with address 127.0.0.1
     start program = "/sbin/start mtlfe-server-8002"
     stop program  = "/sbin/stop  mtlfe-server-8002"
     if failed port 8002 protocol HTTP
-        request /
+        request /ping
         with timeout 10 seconds
         then restart
         
@@ -21,7 +21,7 @@ check host mtlfe-server-8003 with address 127.0.0.1
     start program = "/sbin/start mtlfe-server-8003"
     stop program  = "/sbin/stop  mtlfe-server-8003"
     if failed port 8003 protocol HTTP
-        request /
+        request /ping
         with timeout 10 seconds
         then restart
         
@@ -29,14 +29,14 @@ check host mtlfe-hook-9001 with address 127.0.0.1
     start program = "/sbin/start mtlfe-hook-9001"
     stop program  = "/sbin/stop  mtlfe-hook-9001"
     if failed port 9001 protocol HTTP
-        request /
+        request /ping
         with timeout 10 seconds
         then restart
 
-check host mtlfe.org with address mtlfe.org
-    start program = "/etc/init.d/nginx start"
-    stop program  = "/etc/init.d/nginx stop
-    if failed port 80 protocol HTTP
-        request /
-        with timeout 10 seconds
-        then restart
+check process nginx with pidfile /var/run/nginx.pid
+	group www
+	start program = “/etc/init.d/nginx start”
+	stop program = “/etc/init.d/nginx stop”
+	if children > 250 then restart
+	if loadavg(5min) greater than 10 for 8 cycles then stop
+	if 3 restarts within 5 cycles then timeout
