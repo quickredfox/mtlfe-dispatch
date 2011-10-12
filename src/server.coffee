@@ -24,7 +24,7 @@ details =
         vhosts:    config.vhosts.length
         hostnames: hostnames
         
-vhosts.push connect.router (routes)-> 
+vhosts.push server: connect.router (routes)-> 
     routes.get '/ping', (req, res, next)-> res.end('pong',"utf8") 
     
 dispatch = connect.createServer.apply connect, vhosts.map (vhost)->  vhost.server 
