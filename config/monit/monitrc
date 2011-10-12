@@ -33,11 +33,10 @@ check host mtlfe-hook-9001 with address 127.0.0.1
         with timeout 10 seconds
         then restart
 
-check host mtlfe.org with address 127.0.0.1
+check host mtlfe.org with address mtlfe.org
     start program = "/etc/init.d/nginx start"
     stop program  = "/etc/init.d/nginx stop
     if failed port 80 protocol HTTP
         request /
         with timeout 10 seconds
         then restart
-
