@@ -1,3 +1,5 @@
+/etc/init.d/nginx stop && killall monit
+
 stop mtlfe-server-8001 
 stop mtlfe-server-8002 
 stop mtlfe-server-8003 
