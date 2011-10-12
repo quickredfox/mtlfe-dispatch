@@ -14,6 +14,6 @@ start mtlfe-server-8002 && \
 start mtlfe-server-8003 && \
 start mtlfe-hook-9001
 
-/etc/init.d/nginx restart &&\
+/etc/init.d/nginx restart
 #monit -d 60 -c /etc/monit/monitrc
 
