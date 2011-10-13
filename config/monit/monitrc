@@ -9,7 +9,6 @@ set mailserver smtp.gmail.com port 587
 check host mtlfe-server-8001 with address 127.0.0.1
     start program = "/sbin/start mtlfe-server-8001"
     stop program  = "/sbin/stop  mtlfe-server-8001"
-	if 3 restarts within 5 cycles then unmonitor
     if failed port 8001 protocol HTTP
         request /ping
         with timeout 10 seconds
@@ -19,7 +18,6 @@ check host mtlfe-server-8001 with address 127.0.0.1
 check host mtlfe-server-8002 with address 127.0.0.1
     start program = "/sbin/start mtlfe-server-8002"
     stop program  = "/sbin/stop  mtlfe-server-8002"
-	if 3 restarts within 5 cycles then unmonitor
     if failed port 8002 protocol HTTP
         request /ping
         with timeout 10 seconds
@@ -28,7 +26,6 @@ check host mtlfe-server-8002 with address 127.0.0.1
 check host mtlfe-server-8003 with address 127.0.0.1
     start program = "/sbin/start mtlfe-server-8003"
     stop program  = "/sbin/stop  mtlfe-server-8003"
-	if 3 restarts within 5 cycles then unmonitor
     if failed port 8003 protocol HTTP
         request /ping
         with timeout 10 seconds
